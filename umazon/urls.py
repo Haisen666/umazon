@@ -17,10 +17,11 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
 import account.views
+import toppage.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('topicon/', include('topicon.urls')),
-    path('user_index/', account.views.user_index,name='user_index'),
+    path('',toppage.views.top,name='toppage'),
     path('', include('account.urls')),
+    path('user_index/', account.views.user_index,name='user_index'),
 ]

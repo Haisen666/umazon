@@ -17,4 +17,4 @@ class Logout(LoginRequiredMixin, LogoutView):
 
 
 def user_index(request):
-    return render(request,'accounts/user_index.html')
+    return render(request,'top/toppage.html')

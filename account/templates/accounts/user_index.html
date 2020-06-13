@@ -7,5 +7,10 @@
 </head>
 <body>
     <h1>ログイン成功</h1>
+    {% if user.is_authenticated %}
+    <a >ユーザ名：{{ user.get_username }}</a>
+    {% endif %}
+
+    <a href="{% url 'account:logout' %}">ログアウト</a>
 </body>
 </html>
