@@ -21,6 +21,7 @@ import toppage.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',toppage.views.product_list,name='product_list'),
     path('',toppage.views.top,name='toppage'),
     path('', include('account.urls')),
     path('user_index/', account.views.user_index,name='user_index'),
