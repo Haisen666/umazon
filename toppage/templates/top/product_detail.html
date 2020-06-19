@@ -1,0 +1,11 @@
+{% extends '../base.html' %}
+
+{% block content %}
+
+<h1>商品詳細</h1>
+<h3>{{ product.name }}</h3>
+価額：{{ product.price }}円<br>
+在庫：{{ product.count }}個<br>
+
+
+{% endblock content %}

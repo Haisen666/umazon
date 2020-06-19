@@ -6,15 +6,19 @@
     <title>Umazon</title>
 </head>
 <body>
-    
-{% if user.is_authenticated %}
-<a >ユーザ名：{{ user.get_username }}</a>
-{% endif %}
 
-<a href="{% url 'account:logout' %}">ログアウト</a>
-{% block content %}
+    <a href="{% url 'toppage' %}">トップページへ</a>
+    ｜
+    {% if user.is_authenticated %}
+    <a >ユーザ名：{{ user.get_username }}</a>
+    {% endif %}
+    ｜
+    <a href="{% url 'account:logout' %}">ログアウト</a>
+  
 
-{% endblock %}
-    
+    {% block content %}
+
+    {% endblock %}
+
 </body>
 </html>
