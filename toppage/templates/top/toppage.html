@@ -8,5 +8,7 @@
     <li>({{ product.category.name }}) <a href="{% url 'product_detail' product.id %}">{{ product.name }}</a>: {{ product.price }}円</li>
     {%endfor%}
 </ul>
+
+
 {% endblock content %}
 

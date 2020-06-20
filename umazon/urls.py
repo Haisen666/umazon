@@ -18,11 +18,18 @@ from django.urls import path
 from django.conf.urls import include
 import account.views
 import toppage.views
+import product.views
+import category.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',toppage.views.top,name='toppage'),
     path('', include('account.urls')),
     path('user_index/', account.views.user_index,name='user_index'),
-    path('products/<int:product_id>',toppage.views.product_detail,name='product_detail')
+    path('products/<int:product_id>',product.views.product_detail,name='product_detail'),
+    path('products/<int:product_id>/edit/', product.views.product_edit,name='product_edit'),
+    path('products/<int:product_id>/delete/',product.views.product_delete,name='product_delete'),
+    path('products/post/',product.views.product_post,name='product_post'),
+    path('category/<int:category_id>/edit/', category.views.category_edit,name='category_edit'),
+    path('category/post/',category.views.category_post,name='category_post'),
 ]

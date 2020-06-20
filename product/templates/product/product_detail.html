@@ -4,8 +4,9 @@
 
 <h1>商品詳細</h1>
 <h3>{{ product.name }}</h3>
-価額：{{ product.price }}円<br>
+価格：{{ product.price }}円<br>
 在庫：{{ product.count }}個<br>
 
-
+<a href="{% url 'product_edit' product.id %}">編集</a>
+  <a href="{% url 'product_delete' product.id %}">削除</a>
 {% endblock content %}
