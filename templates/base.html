@@ -4,24 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Umazon</title>
+    {% load static %}
+    <link rel=“stylesheet” type="text/css" href="{% static 'style.css' %}">
 </head>
 <body>
+    <div class="header">
 
-    <a href="{% url 'toppage' %}">トップページへ</a>
-    ｜
-    {% if user.is_authenticated %}
-    <a >ユーザ名：{{ user.get_username }}</a>
-    {% endif %}
-    ｜
-    <a href="{% url 'account:logout' %}">ログアウト</a>
-    |
-    <a href="{% url 'product_post' %}">商品登録</a>
-    |
-    <a href="{% url 'category_post' %}">カテゴリー登録</a>
+        <a href="{% url 'toppage' %}"><img src="{% static 'image\Primary_logo.png' %}" alt=""></a>
+        ｜
+        {% if user.is_authenticated %}
+        <a >ユーザ名：{{ user.get_username }}</a>
+        {% endif %}
+        ｜
+        <a href="{% url 'account:logout' %}">ログアウト</a>
+        |
+        <a href="{% url 'product_post' %}">商品登録</a>
+        |
+        <a href="{% url 'category_post' %}">カテゴリー登録</a>
 
-    {% block content %}
+    </div>
 
-    {% endblock %}
+    <div class="main">
+        <img src="{% static 'image\logo_test.jpg' %}" alt="">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+
+    <div class="footer">
+
+
+    </div>
 
 </body>
 </html>
