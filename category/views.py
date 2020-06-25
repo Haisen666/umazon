@@ -30,7 +30,7 @@ def category_edit(request, category_id):
         form =CategoryEditForm(request.POST, instance=category)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('category_detail',args=(category.id,)))
+            return HttpResponseRedirect(reverse('category_post'))
 
     else:
         form = CategoryEditForm(instance=category)

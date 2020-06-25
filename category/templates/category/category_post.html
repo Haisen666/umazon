@@ -10,4 +10,13 @@
     
 </form>
 
+<h1>カテゴリー一覧</h1>
+
+<ul>
+    {%for cate in category%}
+    <li><a href="{% url 'category_edit' cate.id %}">{{ cate.name }}</a></li>
+    {%endfor%}
+</ul>
+
+
 {% endblock %}

@@ -1,6 +1,9 @@
+from django.core.paginator import Paginator
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
 from django.template.response import TemplateResponse
 from product.models import Product
+from product.forms import ProductSearchForm
 
 
 
@@ -8,7 +11,25 @@ from product.models import Product
 
 def top(request):
     products = Product.objects.order_by('name')
-    return TemplateResponse(request,'top/toppage.html',{'products': products})
+    form = ProductSearchForm(request.GET)
+    products = form.filter_products(products)
+    
+    params = request.GET.copy()
+    if 'page' in params:
+        page = params['page']
+        del params['page']
+    else:
+        page = 1
+    search_params = params.urlencode()
+
+
+    paginator = Paginator(products, 5)
+    page = request.GET.get('page', 1)
+    try:
+        products = paginator.page(page)
+    except (EmptyPage, PageNotAnInteger):
+        products = paginator.page(1)
+    return TemplateResponse(request,'top/toppage.html',{'products': products,'form': form,'search_params': search_params})
 
 
 

@@ -5,8 +5,8 @@
 <br>{{propro}}
 <form method="post">
     {% csrf_token %}
-    <!-- {{form.as_p}} -->
-    <p>カテゴリー名:
+    {{form.as_p}}
+    <!-- <p>カテゴリー名:
         <select name="category">
         {%for cate in category%}
         <option value="{{ cate.id }}">
@@ -17,7 +17,7 @@
     </p>
     <p>名前:</p><input type="text" name="name">
     <p>価格:</p><input type="text" name="price">
-    <p>数量:</p><input type="text" name="count"><br>
+    <p>数量:</p><input type="text" name="count"><br> -->
     <input type="submit" value="登録">
     
 </form>

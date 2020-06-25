@@ -8,7 +8,7 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    category = models.ForeignKey(Category, null=True, blank=True,on_delete=models.SET_NULL)
+    category = models.ForeignKey(Category,verbose_name='カテゴリー名', null=True, blank=True,on_delete=models.SET_NULL)
     name = models.CharField("商品名", max_length=128)
     price = models.PositiveIntegerField("価格")
     count = models.PositiveIntegerField('数量')

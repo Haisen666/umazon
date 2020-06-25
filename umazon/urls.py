@@ -20,6 +20,7 @@ import account.views
 import toppage.views
 import product.views
 import category.views
+import cart.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,4 +33,5 @@ urlpatterns = [
     path('products/post/',product.views.product_post,name='product_post'),
     path('category/<int:category_id>/edit/', category.views.category_edit,name='category_edit'),
     path('category/post/',category.views.category_post,name='category_post'),
+    path('cart/<int:product_id>/add/', cart.views.cart_add, name='cart_add'),
 ]
