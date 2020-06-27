@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.template.response import TemplateResponse
 from product.models import Product
 from product.forms import ProductSearchForm
-
+from rest_framework import generics, permissions
 
 
 # Create your views here.

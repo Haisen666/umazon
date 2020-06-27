@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
+from django.contrib.auth.models import User
 import account.views
 import toppage.views
 import product.views
@@ -34,4 +35,5 @@ urlpatterns = [
     path('category/<int:category_id>/edit/', category.views.category_edit,name='category_edit'),
     path('category/post/',category.views.category_post,name='category_post'),
     path('cart/<int:product_id>/add/', cart.views.cart_add, name='cart_add'),
+    path('cart/list/', cart.views.cart_list, name='cart_list'),
 ]
