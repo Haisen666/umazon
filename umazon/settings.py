@@ -147,3 +147,8 @@ REST_FRAMEWORK = {
 LOGIN_URL = '/login'
 LOGIN_REDIRECT_URL = '/user_index'
 LOGOUT_REDIRECT_URL='/login'
+
+
+
+IMAGE_ROOT = os.path.join(BASE_DIR, 'images')
+IMAGE_URL = '/images/'

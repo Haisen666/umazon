@@ -1,9 +1,79 @@
-.header {
-    background-color: burlywood;
-    height: 90px;
-  }
+{% load static %}
+body {
+  margin: 0;
+  font-family: "Hiragino Kaku Gothic ProN";
+}
 
-.main {
-    background-color: #bdf7f1;
-    height: 600px;
-  }
+a {
+  text-decoration: none;
+}
+
+header {
+  background-color: burlywood;
+  height: 70px;
+  width: 100%;
+}
+
+.container {
+  width: 1170px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+
+.header-logo {
+  float: left;
+  
+}
+
+main {
+  background-image: url("/static/image/timg.jpg");
+  height: 600px;
+}
+
+.account_list{
+  float: right;
+  background-color: rgba(255, 255, 255, 0.3);
+  transition:all 0.5s;
+}
+
+
+
+.account_list a{
+  line-height:70px;
+  padding:0 25px;
+  color:black;
+  display:block;
+}
+
+.header-list {
+  float: left;
+  padding: 35px 20px;
+}
+
+
+.login{
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.login:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.btn {
+  padding: 8px 24px;
+  color: white;
+  opacity: 0.8;
+  border-radius:4px;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+
+.account-hover{
+  display: none;
+}
+
+.account-active{
+  display:inline-block;
+}

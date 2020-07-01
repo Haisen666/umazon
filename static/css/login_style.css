@@ -1,0 +1,38 @@
+.login-page{
+    text-align:center;
+    width: 600px;
+    padding: 40px;
+    margin: 30px auto;
+    border: 1px solid #555;
+}
+
+.login-logo{
+    padding-top: 15px;
+    padding-bottom: 10px;
+}
+
+
+body{
+    background-color: blanchedalmond;
+}
+
+.col-xs-4{
+    padding-top: 10px;
+}
+
+.btn{
+    padding: 8px 24px;
+    color:black;
+    display: inline-block;
+    opacity: 0.8;
+    border-radius:4px;
+}
+
+.btn:hover {
+    opacity: 1;
+}
+
+body{
+    background-image: url("/static/image/unnamed.png");
+    background-size: cover;
+  }

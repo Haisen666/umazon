@@ -26,7 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',toppage.views.top,name='toppage'),
     path('', include('account.urls')),
-    path('user_index/', account.views.user_index,name='user_index'),
+    # path('user_index/', account.views.user_index,name='user_index'),
     path('products/<int:product_id>',product.views.product_detail,name='product_detail'),
     path('products/<int:product_id>/edit/', product.views.product_edit,name='product_edit'),
     path('products/<int:product_id>/delete/',product.views.product_delete,name='product_delete'),
