@@ -5,19 +5,22 @@ from django.template.response import TemplateResponse
 from django.http import Http404
 from django.http.response import HttpResponseRedirect
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 # Create your views here.
 def category_post(request):
-    if request.method =='POST':
-        form = CategoryPostForm(request.POST)
-        if form.is_valid():
-            form.save()
+    if request.user.has_perm('accounts.admin'):
+        if request.method =='POST':
+            form = CategoryPostForm(request.POST)
+            if form.is_valid():
+                form.save()
+        else:
+            form = CategoryPostForm(None)
+
+        category=Category.objects.all()
+        return TemplateResponse(request,'category/category_post.html',{'form':form,'category':category})
     else:
-        form = CategoryPostForm(None)
-
-    category=Category.objects.all()
-    return TemplateResponse(request,'category/category_post.html',{'form':form,'category':category})
-
+        return TemplateResponse(request,'top/toppage.html')
 
 
 def category_edit(request, category_id):
@@ -25,13 +28,16 @@ def category_edit(request, category_id):
         category=Category.objects.get(id=category_id)
     except Category.DoesNotExist:
         raise Http404
-        
-    if request.method =="POST":
-        form =CategoryEditForm(request.POST, instance=category)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect(reverse('category_post'))
 
+    if request.user.has_perm('accounts.admin'):    
+        if request.method =="POST":
+            form =CategoryEditForm(request.POST, instance=category)
+            if form.is_valid():
+                form.save()
+                return HttpResponseRedirect(reverse('category_post'))
+
+        else:
+            form = CategoryEditForm(instance=category)
+        return TemplateResponse(request, 'category/category_edit.html',{'form': form, 'category': category})
     else:
-        form = CategoryEditForm(instance=category)
-    return TemplateResponse(request, 'category/category_edit.html',{'form': form, 'category': category})
+        return TemplateResponse(request,'top/toppage.html')

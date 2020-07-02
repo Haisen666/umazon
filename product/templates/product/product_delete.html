@@ -1,7 +1,7 @@
 {% extends '../base.html' %}
 
 {% block content %}
-
+<div class=container>
     <h1>商品編集</h1>
 
     <h3>{{ product.name }}</h3>
@@ -10,6 +10,6 @@
         {% csrf_token %}
         <input type="submit" value="削除">
     </form>
-
+</div>
 
 {%endblock%}

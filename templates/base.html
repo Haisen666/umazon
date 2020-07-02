@@ -40,7 +40,6 @@
             </div>
         </div>
     </header>
-    
     <main>
         {% block content %}
 
@@ -49,6 +48,17 @@
 
 
     <footer>
+        <div class="foot-logo">
+            <a href="{% url 'toppage' %}"><img src="{% static 'image\Primary_logo.png' %}" alt=""></a>
+        </div>
+        <div class="foot-list">
+            <ul>
+                <li>会社概要</li>
+                <li>Connect to us</li>
+                <li>問い合わせ</li>
+            </ul>
+
+        </div>
 
     </footer>
 

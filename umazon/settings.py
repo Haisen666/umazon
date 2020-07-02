@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'product',
     'category',
     'cart',
-    'rest_framework',
+    'rest_framework', 
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -148,7 +149,3 @@ LOGIN_URL = '/login'
 LOGIN_REDIRECT_URL = '/user_index'
 LOGOUT_REDIRECT_URL='/login'
 
-
-
-IMAGE_ROOT = os.path.join(BASE_DIR, 'images')
-IMAGE_URL = '/images/'

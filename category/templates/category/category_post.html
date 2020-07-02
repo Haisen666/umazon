@@ -1,22 +1,21 @@
 {% extends '../base.html' %}
 
 {% block content %}
+<div class=container>
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="登録">       
+    </form>
 
-<form method="post">
-    {% csrf_token %}
-    {{form.as_p}}
+    <h1>カテゴリー一覧</h1>
 
-    <input type="submit" value="登録">
-    
-</form>
-
-<h1>カテゴリー一覧</h1>
-
-<ul>
-    {%for cate in category%}
-    <li><a href="{% url 'category_edit' cate.id %}">{{ cate.name }}</a></li>
-    {%endfor%}
-</ul>
+    <ul>
+        {%for cate in category%}
+        <li><a href="{% url 'category_edit' cate.id %}">{{ cate.name }}</a></li>
+        {%endfor%}
+    </ul>
+</div>
 
 
 {% endblock %}

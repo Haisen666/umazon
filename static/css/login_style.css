@@ -1,19 +1,15 @@
-.login-page{
+.login-box{
     text-align:center;
     width: 600px;
     padding: 40px;
     margin: 30px auto;
     border: 1px solid #555;
+    background-color: blanchedalmond;
 }
 
 .login-logo{
     padding-top: 15px;
     padding-bottom: 10px;
-}
-
-
-body{
-    background-color: blanchedalmond;
 }
 
 .col-xs-4{
@@ -32,7 +28,8 @@ body{
     opacity: 1;
 }
 
-body{
+.login-page{
     background-image: url("/static/image/unnamed.png");
     background-size: cover;
-  }
+}
+

@@ -1,4 +1,8 @@
-{% load static %}
+*{
+  margin:0;
+  padding:0;
+}
+
 body {
   margin: 0;
   font-family: "Hiragino Kaku Gothic ProN";
@@ -23,13 +27,9 @@ header {
 
 .header-logo {
   float: left;
-  
+  padding-right: 10px;
 }
 
-main {
-  background-image: url("/static/image/timg.jpg");
-  height: 600px;
-}
 
 .account_list{
   float: right;
@@ -46,9 +46,10 @@ main {
   display:block;
 }
 
-.header-list {
+.header-list a{
+  line-height:70px;
   float: left;
-  padding: 35px 20px;
+  padding: 0 25px;
 }
 
 
@@ -76,4 +77,35 @@ main {
 
 .account-active{
   display:inline-block;
+}
+
+
+main{
+  height:700px;
+  background-color:#FFFFEE;
+}
+
+li{
+  list-style:none;
+}
+
+footer{
+  background-color: rgba(34, 49, 52, 0.9);
+  height: 100px;
+  width: 100%;
+}
+
+.foot-logo{
+  float: left;
+  padding: 10px;
+}
+
+.foot-list{
+  float: right;
+  padding: 10px 10px;
+}
+
+.foot-list li{
+  color: #FFFFEE;
+  padding: 0 10px;
 }
