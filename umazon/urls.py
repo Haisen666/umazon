@@ -22,6 +22,8 @@ import toppage.views
 import product.views
 import category.views
 import cart.views
+from django.conf.urls.static import static
+from umazon import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -37,3 +39,6 @@ urlpatterns = [
     path('cart/<int:product_id>/add/', cart.views.cart_add, name='cart_add'),
     path('cart/list/', cart.views.cart_list, name='cart_list'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.IMAGE_URL, document_root=settings.IMAGE_ROOT)

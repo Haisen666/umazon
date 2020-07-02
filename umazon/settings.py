@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'product',
     'category',
     'cart',
-    'rest_framework', 
+    # 'rest_framework', 
     'widget_tweaks',
 ]
 
@@ -134,18 +134,20 @@ STATICFILES_DIRS =[
 ]
 
 
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-    ),  
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-    ),  
-    'NON_FIELD_ERRORS_KEY': 'detail',
-    'TEST_REQUEST_DEFAULT_FORMAT': 'json'
-}
+# REST_FRAMEWORK = {
+#     'DEFAULT_PERMISSION_CLASSES': (
+#         'rest_framework.permissions.IsAuthenticated',
+#     ),  
+#     'DEFAULT_AUTHENTICATION_CLASSES': (
+#         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+#     ),  
+#     'NON_FIELD_ERRORS_KEY': 'detail',
+#     'TEST_REQUEST_DEFAULT_FORMAT': 'json'
+# }
 
 LOGIN_URL = '/login'
 LOGIN_REDIRECT_URL = '/user_index'
 LOGOUT_REDIRECT_URL='/login'
 
+IMAGE_ROOT = os.path.join(BASE_DIR, 'images')
+IMAGE_URL = '/images/'

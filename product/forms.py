@@ -34,6 +34,7 @@ class ProductEditForm(forms.ModelForm):
         model = Product
         fields = (
             'name',
+            'image',
             'price',
             'count',
         )
@@ -44,6 +45,7 @@ class ProductPostForm(forms.ModelForm):
         fields = (
             'category',
             'name',
+            'image',
             'price',
             'count',
         )

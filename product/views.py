@@ -14,7 +14,9 @@ def product_post(request):
         if request.method =='POST':
             form=ProductPostForm(request.POST)
             if form.is_valid():
-                form.save()
+                if request.FILES['image'] != "":
+                    form.image = request.FILES['image'] 
+                    form.save()
         else:
             form=ProductPostForm(None)
 

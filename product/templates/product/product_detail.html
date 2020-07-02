@@ -4,6 +4,7 @@
 <div class=container>
   <h1>商品詳細</h1>
   <h3>{{ product.name }}</h3>
+  <img src="{{product.image.url}}" alt="">
   価格：{{ product.price }}円<br>
   在庫：{{ product.count }}個<br>
   <form method="post" action="{% url 'cart_add' product.id %}">
