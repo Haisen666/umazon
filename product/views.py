@@ -12,11 +12,18 @@ propro="他の商品登録はこちらどうぞ"
 def product_post(request):
     if request.user.has_perm('accounts.admin'):
         if request.method =='POST':
-            form=ProductPostForm(request.POST)
-            if form.is_valid():
-                if request.FILES['image'] != "":
-                    form.image = request.FILES['image'] 
-                    form.save()
+            form=ProductPostForm(request.POST,request.FILES)
+            try:
+                if form.is_valid():
+                    product=Product()
+                    product.category=Category.objects.get(id=request.POST['category'])
+                    product.name=request.POST['name']
+                    product.image=request.FILES['image']
+                    product.price=request.POST['price']
+                    product.count=request.POST['count']
+                    product.save()
+            except KeyError:
+                pass
         else:
             form=ProductPostForm(None)
 

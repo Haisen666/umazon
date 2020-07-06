@@ -2,9 +2,11 @@
 
 {% block content %}
 
-{%for product in products %}
+{%for c in cart %}
 
-{{product.name}}
+商品：{{c.name}}
+値段：{{c.price}}
+個数：{{c.count}}
 
 {%endfor%}
 

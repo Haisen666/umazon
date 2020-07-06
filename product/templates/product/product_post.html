@@ -3,7 +3,7 @@
 {% block content %}
 <div class=container>
     <br>{{propro}}
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{form.as_p}}
         <!-- <p>カテゴリー名:
