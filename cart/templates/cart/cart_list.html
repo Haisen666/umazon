@@ -2,12 +2,28 @@
 
 {% block content %}
 
+
+
 {%for c in cart %}
+    <form method="post" action="{% url 'cart_edit' product.id %}">
+    <ul>
+        <li>商品：{{c.name}}</li>
+        <li>値段：{{c.price}}円</li>
+        <li>個数：{{c.count}}</li>
+    </ul>
+        
+            {% csrf_token %}
+            <input type="hidden" name="name" value="{{ product.id }}">
+            <input type="hidden" name="price" value="{{ product.price }}">
+            <p>購入数量:</p><input type="text" name="count">
+            <input type="submit" value="カートに追加">
+          </form>
 
-商品：{{c.name}}
-値段：{{c.price}}
-個数：{{c.count}}
-
+<p>=====================================</p>
 {%endfor%}
+<form action="">
+    <input type="submit" value="購入">
+</form>
+
 
 {% endblock %}

@@ -1,6 +1,23 @@
+.product{
+    height:300px;
+}
 .product_style{
     float: left;
+    padding: 10px 20px;
 }
 .detail_style{
     float: right;
+    padding-top: 50px;
+    padding-right: 250px;
+}
+
+.product_style img{
+    width: 450px;
+    height: 100%;
+}
+
+.editor{
+    position: absolute;
+    top: 480px;
+    left: 60px;
 }
