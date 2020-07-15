@@ -34,7 +34,7 @@ def cart_list(request):
     # products=Product.objects.all()
     # product=[]
     for c in cart:
-        product=Product.objects.get(id=c.name)
+        product=Product.objects.get(id=c.product_num)
         c.name=product.name
         c.product_num = product.id
 
@@ -45,17 +45,24 @@ def cart_list(request):
         return TemplateResponse(request,'top/toppage.html')
 
 
-def cart_edit(request, product_num):
-    if not Product.objects.filter(id=product_num).exists():
+def cart_edit(request,product_num):
+    try:
+        cart=Cart.objects.get(id=request.POST['product_num'])
+    except Cart.DoesNotExist:
         raise Http404
-    cart = Cart.objects.get(name=product_id)
-    products=Product.objects.all()
+        
+    
     if request.method =='POST':
-        form = CartForm(request.POST,instance=cart)
-        if form.is_valid():
-            cart.user = request.user.id
-            form.save()
-            return TemplateResponse(request,'cart/cart_list.html',{'cart':cart,'products':products})
+        # form = CartForm(request.POST,instance=cart)
+        # if form.is_valid():
+        #     cart=Cart()
+            # cart.user = request.user.id
+            # cart.product_num = request.POST['product_num']
+            cart.price = request.POST['price']
+            cart.count = request.POST['count']
+            cart.save()
+            return HttpResponseRedirect(reverse('cart_list'))
+
     else:
         form = CartForm()
     return TemplateResponse(request,'top/toppage.html')

@@ -1,0 +1,24 @@
+{% extends '../base.html' %}
+
+{% block content %}
+
+
+{%for c in cart %}
+    
+        <ul>
+            <li>商品：{{c.name}}</li>
+            <!-- <li>値段：{{c.price}}円</li>
+            <li>個数：{{c.count}}</li> -->
+            <li>商品の小計：{{i}}円</li>
+        </ul>
+<p>=====================================</p>
+{%endfor%}
+
+<p>商品件数：{{c}}</p>
+<p>ご請求額：{{money}}</p>
+<form action="">
+    <input type="submit" value="購入">
+</form>
+
+
+{% endblock %}
