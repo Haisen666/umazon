@@ -45,24 +45,33 @@ def cart_list(request):
         return TemplateResponse(request,'top/toppage.html')
 
 
-def cart_edit(request,product_num):
+def cart_edit(request,id):
     try:
-        cart=Cart.objects.get(id=request.POST['product_num'])
+        cart=Cart.objects.get(id=id)
     except Cart.DoesNotExist:
-        raise Http404
-        
-    
+        raise Http404 
     if request.method =='POST':
-        # form = CartForm(request.POST,instance=cart)
-        # if form.is_valid():
-        #     cart=Cart()
-            # cart.user = request.user.id
-            # cart.product_num = request.POST['product_num']
+        form = CartForm(request.POST,instance=cart)
+        if form.is_valid():
+            cart.user = request.user.id
+            cart.product_num = request.POST['product_num']
             cart.price = request.POST['price']
             cart.count = request.POST['count']
             cart.save()
             return HttpResponseRedirect(reverse('cart_list'))
-
     else:
         form = CartForm()
     return TemplateResponse(request,'top/toppage.html')
+
+
+
+def cart_delete(request,id):
+    try:
+        cart=Cart.objects.get(id=id)
+    except Cart.DoesNotExist:
+        raise Http404
+        
+    if request.method =='POST':
+        cart.delete()
+            
+    return HttpResponseRedirect(reverse('cart_list'))

@@ -10,8 +10,9 @@
             <li>商品：{{c.name}}</li>
             <li>値段：{{c.price}}円</li>
             <li>個数：{{c.count}}</li>
+            <li>{{c.user}}</li>
         </ul>
-    <form method="post">    
+    <form method="post" action="{% url 'cart_edit' c.id %}">    
         {% csrf_token %}
         <input type="hidden" name="product_num" value="{{ c.product_num }}">
         <input type="hidden" name="name" value="{{ c.name }}">
@@ -20,10 +21,20 @@
         <input type="submit" value="変更">
     </form>
 
+    <form action="{% url 'cart_delete' c.id %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="削除">
+    </form>
+
+<p>=====================================</p>
+    <form method="POST" action="{% url 'buy_list' %}">
+        {% csrf_token %}
+        <input type="submit" value="購入ページへ">
+    </form>
 <p>=====================================</p>
 {%endfor%}
 
-<a href="{% url 'buy_list' %}">購入ページへ</a>
+<!-- <a href="{% url 'buy_list' %}">購入ページへ</a> -->
 
 
 
