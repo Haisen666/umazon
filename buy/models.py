@@ -1,4 +1,5 @@
 from django.db import models
+from cart.models import Cart
 
 # Create your models here.
 class Buy(models.Model):
@@ -8,3 +9,4 @@ class Buy(models.Model):
     price = models.PositiveIntegerField("価格")
     count = models.PositiveIntegerField('数量')
     total_price = models.PositiveIntegerField("合計",null=True, blank=True)
+    buy_count = models.PositiveIntegerField("購入回数",null=True, blank=True)

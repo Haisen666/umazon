@@ -9,5 +9,5 @@ class BuyForm(forms.ModelForm):
             'name',
             'price',
             'count',
-            'total_price'
+            'total_price',
         )

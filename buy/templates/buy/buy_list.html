@@ -2,10 +2,10 @@
 
 {% block content %}
 
-
-{%for b in buy %}
-    
+<div class="container">
+{%for b in buy %}   
         <ul>
+            {{b.product_num}}
             <li>商品：{{b.name}}</li>
             <!-- <li>値段：{{b.price}}円</li>
             <li>個数：{{b.count}}</li> -->
@@ -20,6 +20,6 @@
 <form action="">
     <input type="submit" value="購入">
 </form>
-
+</div>
 
 {% endblock %}

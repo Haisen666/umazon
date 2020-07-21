@@ -3,14 +3,14 @@
 {% block content %}
 
 
-
+<div class="container">
 {%for c in cart %}
     
         <ul>
+            <li>商品番号：{{c.product_num}}</li>
             <li>商品：{{c.name}}</li>
             <li>値段：{{c.price}}円</li>
             <li>個数：{{c.count}}</li>
-            <li>{{c.user}}</li>
         </ul>
     <form method="post" action="{% url 'cart_edit' c.id %}">    
         {% csrf_token %}
@@ -26,16 +26,25 @@
         <input type="submit" value="削除">
     </form>
 
-<p>=====================================</p>
+    <p>=====================================</p>
+
     <form method="POST" action="{% url 'buy_list' %}">
         {% csrf_token %}
+        <input type="hidden" name="product_num" value="{{ c.product_num }}">
+        <input type="hidden" name="name" value="{{ c.name }}">
+        <input type="hidden" name="price" value="{{ c.price }}">
+        <input type="hidden" name="count" value="{{ c.count }}">
+        {% if forloop.last %}
         <input type="submit" value="購入ページへ">
+        {%endif%}
     </form>
-<p>=====================================</p>
 {%endfor%}
+    
+
+
 
 <!-- <a href="{% url 'buy_list' %}">購入ページへ</a> -->
 
-
+</div>
 
 {% endblock %}
