@@ -12,19 +12,10 @@
             <li>値段：{{c.price}}円</li>
             <li>個数：{{c.count}}</li>
         </ul>
-    <form method="post" action="{% url 'cart_edit' c.id %}">    
-        {% csrf_token %}
-        <input type="hidden" name="product_num" value="{{ c.product_num }}">
-        <input type="hidden" name="name" value="{{ c.name }}">
-        <input type="hidden" name="price" value="{{ c.price }}">
-        <p>購入数量:</p><input type="text" name="count">
-        <input type="submit" value="変更">
-    </form>
-
-    <form action="{% url 'cart_delete' c.id %}" method="POST">
-        {% csrf_token %}
-        <input type="submit" value="削除">
-    </form>
+        <div class="editor">
+            <a href="{% url 'cart_edit' c.id %}">編集</a>
+            <a href="{% url 'cart_delete' c.id %}">削除</a>
+          </div>
 
     <p>=====================================</p>
 

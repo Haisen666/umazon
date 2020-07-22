@@ -60,8 +60,8 @@ def cart_edit(request,id):
             cart.save()
             return HttpResponseRedirect(reverse('cart_list'))
     else:
-        form = CartForm()
-    return TemplateResponse(request,'top/toppage.html')
+        form = CartForm(instance=cart)
+    return TemplateResponse(request, 'cart/cart_edit.html',{'form': form, 'cart': cart})
 
 
 
@@ -73,5 +73,6 @@ def cart_delete(request,id):
         
     if request.method =='POST':
         cart.delete()
-            
-    return HttpResponseRedirect(reverse('cart_list'))
+        return HttpResponseRedirect(reverse('cart_list'))
+    else:
+        return TemplateResponse(request, 'cart/cart_delete.html',{'cart': cart})

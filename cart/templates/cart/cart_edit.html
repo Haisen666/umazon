@@ -1,0 +1,23 @@
+{% extends '../base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h1>買い物カゴ編集</h1>
+    商品：{{cart.name}}
+    値段：{{cart.price}}円
+    個数：{{cart.count}}
+
+    <form method="post" action="{% url 'cart_edit' cart.id %}">    
+        {% csrf_token %}
+        <input type="hidden" name="product_num" value="{{ cart.product_num }}">
+        <input type="hidden" name="name" value="{{ cart.name }}">
+        <input type="hidden" name="price" value="{{ cart.price }}">
+        <p>購入数量:</p><input type="text" name="count">
+        <input type="submit" value="変更">
+    </form>
+    <a href="{% url 'cart_list' %}">買い物カゴに戻る</a>
+
+</div>
+
+{%endblock%}
