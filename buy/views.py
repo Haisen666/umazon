@@ -12,6 +12,16 @@ from buy.forms import BuyForm
 # Create your views here.
 
 def buy_list(request):
+    buy=Buy.objects.filter(user=request.user.id)
+    
+    if buy:
+        return TemplateResponse(request,'buy/buy_list.html',{'buy':buy})
+    else:
+        return TemplateResponse(request,'top/toppage.html')
+
+
+
+def buy_post(request):
     try:
         cart=Cart.objects.filter(user=request.user.id)
     except Cart.DoesNotExist:
@@ -19,7 +29,6 @@ def buy_list(request):
     
     buy = Buy()
     if request.method =='POST':
-        count=0
         for c in cart:
             form = BuyForm(request.POST)
             if form.is_valid():
@@ -29,13 +38,16 @@ def buy_list(request):
                 buy.price = c.price
                 buy.count = c.count
                 buy.total_price = c.price*c.count
+                buy.buy_count = 1
                 buy.save()
-                count+=1
             else:
                 form = BuyForm(None)
+
+                
+        cart.delete()
         buy=Buy.objects.filter(user=request.user.id)
     if buy:
-        return TemplateResponse(request,'buy/buy_list.html',{'buy':buy,'count':count})
+        return TemplateResponse(request,'buy/buy_list.html',{'buy':buy})
        
     else:
         return TemplateResponse(request,'top/toppage.html')

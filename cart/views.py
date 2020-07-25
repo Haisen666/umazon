@@ -21,6 +21,7 @@ def cart_add(request, product_id):
             cart = Cart()
             cart.user = request.user.id
             cart.product_num = product_id
+            cart.name = request.POST['name']
             cart.price = request.POST['price']
             cart.count = request.POST['count']
             cart.save()

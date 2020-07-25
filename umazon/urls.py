@@ -40,7 +40,8 @@ urlpatterns = [
     path('cart/<int:product_id>/add/', cart.views.cart_add, name='cart_add'),
     path('cart/list/', cart.views.cart_list, name='cart_list'),
     path('cart/<int:id>/edit/', cart.views.cart_edit, name='cart_edit'),
-    path('buy/', buy.views.buy_list, name='buy_list'),
+    path('buy/', buy.views.buy_post, name='buy_post'),
+    path('buy_list/', buy.views.buy_list, name='buy_list'),
     path('cart/<int:id>/delete', cart.views.cart_delete, name='cart_delete'),
     
 
