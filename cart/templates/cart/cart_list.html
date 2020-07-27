@@ -4,6 +4,7 @@
 
 
 <div class="container">
+    <form method="POST" action="{% url 'buy_post' %}">
 {%for c in cart %}
     
         <ul>
@@ -19,17 +20,18 @@
 
     <p>=====================================</p>
 
-    <form method="POST" action="{% url 'buy_post' %}">
+   
         {% csrf_token %}
         <input type="hidden" name="product_num" value="{{ c.product_num }}">
         <input type="hidden" name="name" value="{{ c.name }}">
         <input type="hidden" name="price" value="{{ c.price }}">
         <input type="hidden" name="count" value="{{ c.count }}">
         {% if forloop.last %}
-        <input type="submit" value="購入ページへ">
+            <input type="submit" value="購入ページへ">
         {%endif%}
-    </form>
+    
 {%endfor%}
+    </form>
     
 
 

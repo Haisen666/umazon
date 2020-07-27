@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'category',
     'cart',
     'buy',
+    'ranking',
     # 'rest_framework', 
     'widget_tweaks',
 ]

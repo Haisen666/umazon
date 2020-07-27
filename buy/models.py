@@ -10,3 +10,4 @@ class Buy(models.Model):
     count = models.PositiveIntegerField('数量')
     total_price = models.PositiveIntegerField("合計",null=True, blank=True)
     buy_count = models.PositiveIntegerField("購入回数",null=True, blank=True)
+    buy_flag = models.BooleanField("購入結果",default=False)

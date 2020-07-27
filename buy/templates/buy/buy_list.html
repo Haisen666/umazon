@@ -3,21 +3,24 @@
 {% block content %}
 
 <div class="container">
-{%for b in buy %}   
+{%for b in buy %}
+    {%if b.buy_flag == False%}
         <ul>
             {{b.product_num}}
             <li>商品：{{b.name}}</li>
-            <!-- <li>値段：{{b.price}}円</li>
-            <li>個数：{{b.count}}</li> -->
+            <!-- <li>値段：{{b.price}}円</li> -->
+            <li>個数：{{b.count}}</li>
             <li>商品の小計：{{b.total_price}}円</li>
         </ul>
 <p>=====================================</p>
+    {%endif%}
 {%endfor%}
 
-<p>商品件数：{{count}}</p>
+<p>商品件数：{{kensu}}</p>
 <p>送料：</p>
-<p>ご請求額：</p>
-<form action="">
+<p>ご請求額：{{money}}</p>
+<form method="POST" action="{% url 'buy_action' %}">
+    {% csrf_token %}
     <input type="submit" value="購入">
 </form>
 </div>

@@ -1,0 +1,18 @@
+{% extends '../base.html' %}
+
+{% block content %}
+<div class="container">
+<h2>買い物ランキング</h2>
+{%for b in buy%}
+
+<ol>
+    <li>商品名：{{b.name}}</li>
+</ol>
+
+
+{%endfor%}
+
+
+
+</div>
+{% endblock content %}
