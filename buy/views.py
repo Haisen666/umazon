@@ -36,7 +36,6 @@ def buy_post(request):
         raise Http404
     
     if request.method =='POST':
-        
         for c in cart:
             form = BuyForm(request.POST)
             if form.is_valid():
@@ -81,20 +80,18 @@ def buy_action(request):
 
     if request.method =='POST':
         for b in buy:
-            product = Product.objects.get(id = b.product_num)
-            product.count = product.count - b.count
-            product.save()
-            b.buy_flag = True
-            b.save()
-            
-            rank = Rank.objects.get(product_num = b.product_num)
-            if rank.buy_count == "" or rank.buy_count == None:
-                rank.buy_count = b.buy_count
-            else:
-                rank.buy_count = rank.buy_count+b.buy_count
-            rank.save()
-             
+            if b.buy_flag == False:
+                product = Product.objects.get(id = b.product_num)
+                product.count = product.count - b.count
+                product.save()
 
+                b.buy_flag = True
+                rank=Rank()
+                rank.product_num = b
+                rank.buy_count = rank.buy_count+b.count
+                rank.save()
+
+                b.save()
         return TemplateResponse(request,'top/toppage.html')
     else:
         return TemplateResponse(request,'top/toppage.html')

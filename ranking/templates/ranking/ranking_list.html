@@ -3,14 +3,15 @@
 {% block content %}
 <div class="container">
 <h2>買い物ランキング</h2>
-{%for b in buy%}
 
 <ol>
-    <li>商品名：{{b.name}}</li>
+    {%for r in rank%}
+    <li>商品名：{{r.product_num.name}}</li>
+    <li>商品名：{{r.product_num.product_num}}</li>
+    {%endfor%}
 </ol>
 
 
-{%endfor%}
 
 
 
