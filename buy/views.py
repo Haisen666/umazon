@@ -7,6 +7,7 @@ from product.models import Product
 from django.template.response import TemplateResponse
 from cart.models import Cart
 from buy.models import Buy
+from ranking.models import Rank
 from product.models import Product
 from buy.forms import BuyForm
 # Create your views here.
@@ -85,6 +86,15 @@ def buy_action(request):
             product.save()
             b.buy_flag = True
             b.save()
+            
+            rank = Rank.objects.get(product_num = b.product_num)
+            if rank.buy_count == "" or rank.buy_count == None:
+                rank.buy_count = b.buy_count
+            else:
+                rank.buy_count = rank.buy_count+b.buy_count
+            rank.save()
+             
+
         return TemplateResponse(request,'top/toppage.html')
     else:
         return TemplateResponse(request,'top/toppage.html')
