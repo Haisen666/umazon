@@ -91,14 +91,20 @@ def buy_action(request):
                     b.buy_flag = True
                     b.save()
 
-                    rank=Rank()
-                    rank.product_num = b
-                    if rank.buy_count == "" or rank.buy_count == None:
-                        rank.buy_count = b.count
-                    else:
+                    try:
+                        rank=Rank.objects.get(product_num__product_num=b.product_num)                       
                         rank.buy_count = rank.buy_count + b.count
-                    rank.save() 
+                        rank.save()
+                    except Rank.DoesNotExist:
+                        rank = Rank()
+                        rank.product_num = b
+                        rank.buy_count = b.count
+                        rank.save()
+            else:
+                buyhistory = BuyHistory()
+                buyhistory.buy_history = b
 
         return TemplateResponse(request,'top/toppage.html')
+        
     else:
         return TemplateResponse(request,'top/toppage.html')

@@ -24,6 +24,7 @@ import category.views
 import cart.views
 import buy.views
 import ranking.views
+import buy_history.views
 from django.conf.urls.static import static
 from umazon import settings
 
@@ -46,7 +47,7 @@ urlpatterns = [
     path('cart/<int:id>/delete', cart.views.cart_delete, name='cart_delete'),
     path('buy_action/', buy.views.buy_action, name='buy_action'),
     path('ranking_list/', ranking.views.ranking_list, name='ranking_list'),
-    
+    path('buy_history/', buy_history.views.buy_history, name='buy_history'),
 
 ]
 

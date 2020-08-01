@@ -4,12 +4,16 @@
 <div class="container">
 <h2>買い物ランキング</h2>
 
-<ol>
-    {%for r in rank%}
+
+<ol class = "ranking">
+{%for r in rank%}
     <li>商品名：{{r.product_num.name}}</li>
-    <li>商品名：{{r.product_num.product_num}}</li>
-    {%endfor%}
+    <p>商品番号：{{r.product_num.product_num}}</p>
+    <p>購入数：{{r.buy_count}}</p>
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ 
+{%endfor%} 
 </ol>
+
 
 
 

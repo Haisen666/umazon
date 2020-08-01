@@ -89,6 +89,10 @@ li{
   list-style:none;
 }
 
+.ranking li{
+  list-style:decimal;
+}
+
 footer{
   background-color: rgba(34, 49, 52, 0.9);
   height: 100px;

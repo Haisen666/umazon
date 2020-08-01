@@ -45,9 +45,11 @@ INSTALLED_APPS = [
     'category',
     'cart',
     'buy',
+    'buy_history',
     'ranking',
     # 'rest_framework', 
     'widget_tweaks',
+
 ]
 
 MIDDLEWARE = [
