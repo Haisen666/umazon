@@ -82,14 +82,22 @@ def buy_action(request):
     if request.method =='POST':
         for b in buy:
             if b.buy_flag == False:
-                product = Product.objects.get(id = b.product_num)
-                form =ProductEditForm(request.POST, instance=product)
-                if form.is_valid():                           
+                form =ProductEditForm(request.POST)
+                if form.is_valid():
+                    product = Product.objects.get(id = b.product_num)                           
                     product.count = product.count - b.count
                     product.save()
 
                     b.buy_flag = True
                     b.save()
+
+                    rank=Rank()
+                    rank.product_num = b
+                    if rank.buy_count == "" or rank.buy_count == None:
+                        rank.buy_count = b.count
+                    else:
+                        rank.buy_count = rank.buy_count + b.count
+                    rank.save() 
 
         return TemplateResponse(request,'top/toppage.html')
     else:

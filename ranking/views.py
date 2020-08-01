@@ -6,9 +6,8 @@ from product.models import Product
 
 # Create your views here.
 def ranking_list(request):
-    rank = Rank.objects.order_by('buy_count')
+    rank = Rank.objects.all()
     
 
-
-    return TemplateResponse(request,'ranking/ranking_list.html',{'buy':buy,'rank':rank})
+    return TemplateResponse(request,'ranking/ranking_list.html',{'rank':rank})
 
