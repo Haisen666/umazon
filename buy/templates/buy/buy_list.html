@@ -3,6 +3,7 @@
 {% block content %}
 
 <div class="container">
+<form method="POST" action="{% url 'buy_action' %}">
 {%for b in buy %}
     {%if b.buy_flag == False%}
         <ul>
@@ -14,15 +15,21 @@
         </ul>
 <p>=====================================</p>
     {%endif%}
+    
+        {% csrf_token %}
+        <input type="hidden" name="product_num" value="{{ b.product_num }}">
+        <input type="hidden" name="name" value="{{ b.name }}">
+        <input type="hidden" name="price" value="{{ b.price }}">
+        <input type="hidden" name="count" value="{{ b.count }}">
+        {% if forloop.last %}
+        <input type="submit" value="購入">
+        {%endif%}
+    
 {%endfor%}
-
+</form>
 <p>商品件数：{{kensu}}</p>
 <p>送料：</p>
 <p>ご請求額：{{money}}</p>
-<form method="POST" action="{% url 'buy_action' %}">
-    {% csrf_token %}
-    <input type="submit" value="購入">
-</form>
 </div>
 
 {% endblock %}

@@ -8,6 +8,7 @@ from django.template.response import TemplateResponse
 from cart.models import Cart
 from buy.models import Buy
 from ranking.models import Rank
+from product.forms import ProductEditForm, ProductPostForm
 from product.models import Product
 from buy.forms import BuyForm
 # Create your views here.
@@ -82,16 +83,14 @@ def buy_action(request):
         for b in buy:
             if b.buy_flag == False:
                 product = Product.objects.get(id = b.product_num)
-                product.count = product.count - b.count
-                product.save()
+                form =ProductEditForm(request.POST, instance=product)
+                if form.is_valid():                           
+                    product.count = product.count - b.count
+                    product.save()
 
-                b.buy_flag = True
-                rank=Rank()
-                rank.product_num = b
-                rank.buy_count = rank.buy_count+b.count
-                rank.save()
+                    b.buy_flag = True
+                    b.save()
 
-                b.save()
         return TemplateResponse(request,'top/toppage.html')
     else:
         return TemplateResponse(request,'top/toppage.html')
