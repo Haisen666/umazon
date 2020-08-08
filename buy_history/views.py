@@ -11,4 +11,4 @@ def buy_history(request):
     buy_history = BuyHistory.objects.filter(buy_history__user=request.user.id)
     
 
-    return TemplateResponse(request,'buy_history/buy_history.html',{'rank':rank})
+    return TemplateResponse(request,'buy_history/buy_history.html')

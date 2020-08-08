@@ -15,8 +15,7 @@ def contact_form(request):
         if form.is_valid():
             subject = form.cleaned_data['subject']
             message = form.cleaned_data['message']
-            sender = []
-            sender.append(form.cleaned_data['sender'])
+            sender = form.cleaned_data['sender']
             myself = form.cleaned_data['myself']
             recipients = [settings.EMAIL_HOST_USER]
 
