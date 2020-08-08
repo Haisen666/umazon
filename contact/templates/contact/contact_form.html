@@ -1,0 +1,31 @@
+{% extends '../base.html' %}
+
+{% block content %}
+<div class="container">
+
+
+    <center>
+        <h1>入力フォーム</h1><hr>
+        <br>
+
+        <form action="{% url 'contact:contact_form' %}" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="field">
+                {{ field.errors }}
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.help_text %}
+                    <p class="help">{{ field.help_text|safe }}</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+            <button type="submit">送信</button>
+        </form>
+    </center>
+
+
+
+
+</div>
+{%endblock%}
